@@ -26,15 +26,25 @@ componentDidMount() {
  
 render() {
     const { isLoading,movies} = this.state;
-    return <div>{isLoading ? "Loading..." : movies.map(function (movie) {
-
-      return <Movie key = {movie.id}
+    return <section class='container'>
+      {isLoading ? 
+      <div class ="loader">
+        <span classs="loader__text">Loading...</span>
+      </div> 
+      :(
+        <div class='movies'>
+             {movies.map(function (movie) {
+              <Movie key = {movie.id}
                     id={movie.id} 
                     year={movie.year} 
                     title={movie.title} 
                     summary={movie.summary} 
                     poster={movie.poster}/>
-    })}</div>;
+    })}
+        </div>
+      )
+
+    }</section>;
   }
 }
 export default App;
